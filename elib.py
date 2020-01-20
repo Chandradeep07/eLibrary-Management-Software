@@ -36,22 +36,56 @@ def add(name):
         print("File already exists")
 
 # Searching books
-class Fetch_book:
+class Fetch_book_title:
     def __init__(self,option,title):
         self.option=input()
         self.title=input()
     def search(self):
-        if(self.option.lower()=='title'):
-            f = open('%s.txt'%(self.title), "r")
-            for x in f:
-                print(x)
+        if(self.option=='title'):
+            f = '%s.txt'%(self.title)
+            with open(f) as fp:
+               line = fp.readline()
+               count = 1
+               while line:
+                  print("{}".format(line.strip()))
+                  line=fp.readline()
+                  count+=1
+
+        
                 # if(x==self.title):
                 #     return self.title
+        
+class Fetch_book_author:
+    def __init__(self,option,author):
+        self.option=input()
+        self.author=input()
+    def search(self):
+        if(self.option=='author'):
+            import os
+            arr = os.listdir('C:\\Users\\hp\\Desktop\\cc\\books')
+            for i in arr:
+                 with open(i) as fp:
+                     for j, line in enumerate(fp):
+                         if j == 3 and self.author==line:
+                             break
+                         
+                           
+            with open(i) as fp:
+                    k= fp.readline()
+                    count = 1
+                    while k:
+                      print("{}".format(line.strip()))
+                      k=fp.readline()
+                      count+=1
 
-c=Fetch_book('title','Rich Dad Poor Dad')
+            
+c=Fetch_book_author('author','Dr. R. Nageswara Rao')
 c.search()
 
 
+
+import os
+arr = os.listdir('C:\\Users\\hp\\Desktop\\cc\\books')
 
 
 
